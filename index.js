@@ -18,6 +18,7 @@ const server = http.createServer(function (request, response) {
   response.end("<p>Success</p>");
 });
 
-server.listen(3000, function () {
-  console.log("My server is running");
+
+server.listen(port, () => {
+  console.log('The server is running');
 });
