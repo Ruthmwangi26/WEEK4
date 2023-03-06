@@ -1,24 +1,17 @@
 // Import
-const http = require("http");
+const express = require('express');
+const PORT = process.env.PORT || 3000;
 
-// Create Server
-const server = http.createServer(function (request, response) {
-  const method = request.method;
-  const path = request.url;
-  const headers = request.headers;
 
-  const data = {
-    method,
-    path,
-    headers,
-  };
-
-  console.log(data);
-
-  response.end("<p>Success</p>");
+//express app
+const app = express();
+app.use(express.json());
+//POST REQUEST
+app.post('/', (req,res)=>{
+  const body = req.body;
+  console.log(body)
+  res.status(200).json({message: 'connected'});
 });
-
-const port = process.env.PORT || 3000
-server.listen(port, () => {
-  console.log('The server is running');
+app.listen(PORT, () => {
+  console.log(`The server is running on PORT ${PORT}`);
 });
